@@ -1,8 +1,29 @@
+source ~/.git-completion.bash
+
+# Set git autocompletion and PS1 integration
+if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
+  . /usr/local/git/contrib/completion/git-completion.bash
+fi
+GIT_PS1_SHOWDIRTYSTATE=true
+
+if [ -f /opt/local/etc/bash_completion ]; then
+    . /opt/local/etc/bash_completion
+fi
+
+RED="\[\033[0;31m\]"
+YELLOW="\[\033[0;33m\]"
+YELLOW="\[\e[33;1m\]"
+GREEN="\[\033[0;32m\]"
+NO_COLOUR="\[\033[0m\]"
+DEFAULT="\[\e[0;m\]"
+GRAY="\[\e[0;1m\]"
 
 export TERM="xterm-256color" # used for solarized
 
 #command prompt
-PS1='\[\e[0;1m\]\t\[\e[0;m\] \[\e[33;1m\]\w\$\[\e[0;m\] '
+TIME="\t"
+CWD="\w"
+PS1="$TIME\$(__git_ps1) $YELLOW$CWD$DEFAULT "
 
 alias lcc='./lcc'
 
