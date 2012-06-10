@@ -1,0 +1,28 @@
+[user]
+    name = Ceasar Bautista
+    email = cbautista2010@gmail.com
+[alias]
+    unstage = reset HEAD --
+    uncommit = reset --soft HEAD^
+    newbranch = checkout -b
+    last = log -1 HEAD
+    logg = log --graph --decorate --date=relative --stat
+    history = log --graph --decorate --stat --date=relative --pretty=oneline
+[color]
+    ui = auto
+  [color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+  [color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+  [color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+  [core]
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
