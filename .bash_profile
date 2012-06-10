@@ -11,32 +11,59 @@ if [ -f /opt/local/etc/bash_completion ]; then
 fi
 
 # To add colors to the shell prompt use the following export command syntax:
-# '\e[x;ym'
+# '\e[x;y;zm'
 #   where:
 #     * '\e[' - Start color scheme
-#     * 'x;y' - Color the pair to use (x;y)
+#     * x - Attribute code
+#       * 0 - none
+#       * 1 - bold
+#       * 4 - underscore
+#       * 5 - blink
+#       * 7 - reversed
+#       * 8 - concealed
+#     * y - Foreground color (30-37)
+#       * 0 - black
+#       * 1 - red
+#       * 2 - green
+#       * 3 - yellow
+#       * 4 - blue
+#       * 5 - magenta
+#       * 6 - cyan
+#       * 7 - white
+#     * z - Background color (40-47)
+#       * 0 - black
+#       * 1 - red
+#       * 2 - green
+#       * 3 - yellow
+#       * 4 - blue
+#       * 5 - magenta
+#       * 6 - cyan
+#       * 7 - white
 #     * '\e[m' - Stop color scheme
 # '\[' and '\]' should be put around color codes so that bash does not take
 # them into account when calculating line wraps. They indicate the start and
 # end of a sequence of non-printing characters.
-# See: http://en.wikipedia.org/wiki/ANSI_escape_code
+# See:
+# * http://en.wikipedia.org/wiki/ANSI_escape_code
+# * http://webhome.csc.uvic.ca/~sae/seng265/fall04/tips/s265s047-tips/bash-using-colors.html
+
 NONE="\[\e[0m\]"
-DBLACK="\[\e[0;30m\]"
-LBLACK="\[\e[1;30m\]"
-DRED="\[\e[0;31m\]"
-LRED="\[\e[1;31m\]"
-DGREEN="\[\e[0;32m\]"
-LGREEN="\[\e[1;32m\]"
-DYELLOW="\[\e[0;33m\]"
-LYELLOW="\[\e[1;33m\]"
-DBLUE="\[\e[0;34m\]"
-LBLUE="\[\e[1;34m\]"
-DMAGENTA="\[\e[0;35m\]"
-LMAGENTA="\[\e[1;35m\]"
-DCYAN="\[\e[0;36m\]"
-LCYAN="\[\e[1;36m\]"
-DWHITE="\[\e[0;37m\]"
-LWHITE="\[\e[1;37m\]"
+BLACK="\[\e[0;30m\]"
+BBLACK="\[\e[1;30m\]"
+RED="\[\e[0;31m\]"
+BRED="\[\e[1;31m\]"
+GREEN="\[\e[0;32m\]"
+BGREEN="\[\e[1;32m\]"
+YELLOW="\[\e[0;33m\]"
+BYELLOW="\[\e[1;33m\]"
+BLUE="\[\e[0;34m\]"
+BBLUE="\[\e[1;34m\]"
+MAGENTA="\[\e[0;35m\]"
+BMAGENTA="\[\e[1;35m\]"
+CYAN="\[\e[0;36m\]"
+BCYAN="\[\e[1;36m\]"
+WHITE="\[\e[0;37m\]"
+BWHITE="\[\e[1;37m\]"
 
 export TERM="xterm-256color" # used for solarized
 
@@ -47,7 +74,7 @@ HOSTNAME="\h"
 PROMPT="\$"
 PWD="\w"
 BRANCH="\$(__git_ps1)"
-PS1="$DYELLOW$BRANCH $DCYAN$PWD:$NONE "
+PS1="$YELLOW$BRANCH $CYAN$PWD:$NONE "
 
 alias lcc='./lcc'
 
