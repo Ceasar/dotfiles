@@ -10,20 +10,44 @@ if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
-RED="\[\033[0;31m\]"
-YELLOW="\[\033[0;33m\]"
-YELLOW="\[\e[33;1m\]"
-GREEN="\[\033[0;32m\]"
-NO_COLOUR="\[\033[0m\]"
-DEFAULT="\[\e[0;m\]"
-GRAY="\[\e[0;1m\]"
+# To add colors to the shell prompt use the following export command syntax:
+# '\e[x;ym'
+#   where:
+#     * '\e[' - Start color scheme
+#     * 'x;y' - Color the pair to use (x;y)
+#     * '\e[m' - Stop color scheme
+# '\[' and '\]' should be put around color codes so that bash does not take
+# them into account when calculating line wraps. They indicate the start and
+# end of a sequence of non-printing characters.
+# See: http://en.wikipedia.org/wiki/ANSI_escape_code
+NONE="\[\e[0m\]"
+DBLACK="\[\e[0;30m\]"
+LBLACK="\[\e[1;30m\]"
+DRED="\[\e[0;31m\]"
+LRED="\[\e[1;31m\]"
+DGREEN="\[\e[0;32m\]"
+LGREEN="\[\e[1;32m\]"
+DYELLOW="\[\e[0;33m\]"
+LYELLOW="\[\e[1;33m\]"
+DBLUE="\[\e[0;34m\]"
+LBLUE="\[\e[1;34m\]"
+DMAGENTA="\[\e[0;35m\]"
+LMAGENTA="\[\e[1;35m\]"
+DCYAN="\[\e[0;36m\]"
+LCYAN="\[\e[1;36m\]"
+DWHITE="\[\e[0;37m\]"
+LWHITE="\[\e[1;37m\]"
 
 export TERM="xterm-256color" # used for solarized
 
 #command prompt
 TIME="\t"
-CWD="\w"
-PS1="$TIME\$(__git_ps1) $YELLOW$CWD$DEFAULT "
+USERNAME="\u"
+HOSTNAME="\h"
+PROMPT="\$"
+PWD="\w"
+BRANCH="\$(__git_ps1)"
+PS1="$DYELLOW$BRANCH $DCYAN$PWD:$NONE "
 
 alias lcc='./lcc'
 
