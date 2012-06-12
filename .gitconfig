@@ -4,10 +4,13 @@
 [alias]
     unstage = reset HEAD --
     uncommit = reset --soft HEAD^
-    newbranch = checkout -b
+    create = checkout -b
+    delete = branch -d
     last = log -1 HEAD
     logg = log --graph --decorate --date=relative --stat
     history = log --graph --decorate --stat --date=relative --pretty=oneline
+    merged = branch --merged
+    unmerged = branch --no-merged
 [color]
     ui = auto
   [color "branch"]
