@@ -2,14 +2,33 @@
     name = Ceasar Bautista
     email = cbautista2010@gmail.com
 [alias]
+    # Unstage a file
     unstage = reset HEAD --
+    # Undo the last commit
     uncommit = reset --soft HEAD^
-    create = checkout -b
-    delete = branch -d
+    # Show the last commit
     last = log -1 HEAD
-    logg = log --graph --decorate --date=relative --stat
-    history = log --graph --decorate --stat --date=relative --pretty=oneline
+    # Pretty history
+    history = log --decorate --stat --date=relative
+    # Create a branch
+    create = checkout -b
+    # Delete a branch
+    delete = branch -d
+    # Show all merged branches
     merged = branch --merged
+    # Show all unmerged branches
     unmerged = branch --no-merged
 [color]
-	ui = true
+    # Color everything
+    ui = true
+[help]
+    # Automatically correct and execute mistyped commands after waiting
+    # for the given number of deciseconds (0.1 sec). If more than one
+    # command can be deduced from the entered text, nothing will be
+    # executed. If the value of this option is negative, the corrected
+    # command will be executed immediately. If the value is 0 - the
+    # command will be just shown but not executed. This is the default.
+    autocorrect = -1
+[log]
+    date = relative
+    decorate
