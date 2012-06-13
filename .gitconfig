@@ -6,10 +6,16 @@
     unstage = reset HEAD --
     # Undo the last commit
     uncommit = reset --soft HEAD^
+    # Amend the last commit
+    amend = commit --amend
+
     # Show the last commit
     last = log -1 HEAD
     # Pretty history
-    history = log --decorate --stat --date=relative
+    history = log --decorate --stat --date=relative --abbrev-commit
+
+    # Switch to master
+    master = checkout master
     # Create a branch
     create = checkout -b
     # Delete a branch
