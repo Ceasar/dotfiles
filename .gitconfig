@@ -2,19 +2,30 @@
     name = Ceasar Bautista
     email = cbautista2010@gmail.com
 [alias]
+    # Use template "!sh -c 'git command $0'" for positional arguments
+
     # Discard a change
     discard = checkout --
+    # Unstash a stash
+    unstash = stash pop
     # Unstage a file
     unstage = reset HEAD --
     # Undo the last commit
     uncommit = reset --soft HEAD^
     # Amend the last commit
     amend = commit --amend
+    # Sync with master
+    sync = pull origin master
+
+    # See stashes
+    stashes = stash list
 
     # Show the last commit
-    last = log -1 HEAD
+    last = log -1 HEAD --stat --abbrev-commit
     # Pretty history
-    history = log --decorate --stat --date=relative --abbrev-commit
+    history = log --stat --abbrev-commit --graph
+    # Search history
+    pickax = !sh -c 'git log -S$0 --stat'
 
     # Start a branch
     start = checkout -b
@@ -25,6 +36,8 @@
     master = checkout master
     # Create a branch
     create = checkout -b
+    # Continue working on a branch
+    continue = checkout
     # Delete a branch
     delete = branch -d
     # Show all merged branches
