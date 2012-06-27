@@ -4,6 +4,7 @@ alias dir='ls'
 # Automatically add color and slashes after directories
 alias ls='ls -FG'
 
+
 # Automatically highlight matches
 alias grep="grep --color=auto"
 alias grepr="grep -r"
@@ -15,10 +16,13 @@ alias l='ls'
 # ls, without .pyc files
 alias lp='ls -dC !(*.pyc)'
 alias ..='cd ..'
+alias ...='cd ../..'
 
 
 # Modify the vimrc from anywhere
 alias vimrc='vim ~/.vimrc'
+
+alias check='source ~/.bash_profile'
 
 # Modify the bashrc from anywhere
 alias bashrc='vim ~/.bash_profile; source ~/.bash_profile'
@@ -127,3 +131,13 @@ if [ -f /opt/local/etc/bash_completion ]; then
     . /opt/local/etc/bash_completion
 fi
 
+
+# Find all files with name match $1 in $2
+function get {
+    find $2 -name $1
+}
+
+# Replace word $1 with word $2 recursively in $3
+function replace {
+    perl -e "s/$1/$2/g;" -pi $(find $3 -type f)
+}
