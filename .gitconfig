@@ -10,11 +10,11 @@
     # Show an abbreviated status
     stat = status -sb
 
+    # Stage everything
+    prepare = add . -vA
+
     # Discard a change
     discard = checkout --
-
-    # Unstash a stash
-    unstash = stash pop
 
     # Unstage a file
     unstage = reset HEAD --
@@ -27,6 +27,10 @@
 
     # Sync with master
     sync = pull --rebase origin master
+
+
+    # Unstash a stash
+    unstash = stash pop
 
     # See stashes
     stashes = stash list
