@@ -141,3 +141,9 @@ function get {
 function replace {
     perl -e "s/$1/$2/g;" -pi $(find $3 -type f)
 }
+
+function spawn {
+osascript <<END 
+    tell app "Terminal" to do script "$1" 
+END
+}
