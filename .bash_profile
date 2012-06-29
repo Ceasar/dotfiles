@@ -4,6 +4,9 @@ alias dir='ls'
 # Automatically add color and slashes after directories
 alias ls='ls -FG'
 
+# Enable feedback for rm
+alias rm='rm -v'
+
 
 # Automatically highlight matches
 alias grep="grep --color=auto"
