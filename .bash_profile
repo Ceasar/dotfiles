@@ -142,6 +142,7 @@ function replace {
     perl -e "s/$1/$2/g;" -pi $(find $3 -type f)
 }
 
+# Spawn a new terminal window and run the command $1
 function spawn {
 osascript <<END 
     tell app "Terminal" to do script "$1" 
