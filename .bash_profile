@@ -1,6 +1,3 @@
-# Export the Path to include scripts inside of ~/bin
-export PATH="$PATH:~/bin/"
-
 # aliases
 # =======
 
