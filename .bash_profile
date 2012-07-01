@@ -1,7 +1,8 @@
-# aliases
-# =======
+# Export the Path to include scripts inside of ~/bin
 export PATH="$PATH:~/bin/"
 
+# aliases
+# =======
 
 # Enable feedback for rm
 alias rm='rm -v'
@@ -9,28 +10,29 @@ alias rm='rm -v'
 # Short alias for grep
 alias f="grep -r"
 
-# Since I accidentally type l instead of ls
-alias l='ls'
-
-# ls, without .pyc files
-alias lp='ls -dC !(*.pyc)'
+# xargs as I would expec
+alias args="xargs -0"
 
 # cd quickly 
 alias ..='cd ..'
 alias ...='cd ../..'
 
-
-# dotfiles
-# ========
-
+# Since I accidentally type l instead of ls
+alias l='ls'
 
 # Automatically add color and slashes after directories
 alias ls='ls -FG'
 
 # Automatically highlight matches
 alias grep="grep --color=auto"
+
 # Check if the bashrc has been updated and updated it
 alias check='source ~/.bash_profile'
+
+
+# dotfiles
+# ========
+
 
 # Modify the vimrc from anywhere
 alias vimrc='vim ~/.vimrc'
@@ -40,11 +42,6 @@ alias bashrc='vim ~/.bash_profile; check'
 
 # Modify the gitconfig from anywhere
 alias gitconfig='vim ~/.gitconfig'
-
-
-# common programs
-alias django='~/django'
-alias eclipse='open ~/eclipse/eclipse'
 
 
 # colors
