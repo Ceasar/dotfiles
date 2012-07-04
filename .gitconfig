@@ -1,5 +1,6 @@
 [user]
     name = Ceasar Bautista
+
     email = cbautista2010@gmail.com
 
 
@@ -93,4 +94,5 @@
 [log]
     # Make all dates in the log relative
     date = relative
+
     decorate
