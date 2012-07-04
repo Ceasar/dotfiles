@@ -4,8 +4,11 @@
 # Enable feedback for rm
 alias rm='rm -v'
 
+# Enable feedback for mv
+alias mv='mv -v'
+
 # Short alias for grep
-alias f="grep -r"
+alias f="grep -rn"
 
 # xargs as I would expec
 alias args="xargs -0"
