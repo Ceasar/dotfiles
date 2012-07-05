@@ -1,6 +1,8 @@
 # aliases
 # =======
 
+alias redeploy='fab vagrant:franklin-api deploy_api'
+
 # Enable feedback for rm
 alias rm='rm -v'
 
@@ -204,6 +206,13 @@ END
 function bounds {
 osascript <<END 
     tell application "Finder" to get the bounds of the window of the desktop
+END
+}
+
+# Play/Pause Spotify
+function pause {
+osascript <<END 
+    tell application "Spotify" to playpause
 END
 }
 
