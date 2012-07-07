@@ -10,13 +10,21 @@ set hidden "use .swp files
 set wildmenu "command-line completion
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
-"" Searching
+
+" Searching
+"""""""""""
+
+
 set hlsearch   "highlight searches
 set incsearch  "highlight what you are searching for as you type
 set ignorecase "searches are case insensitive...
 set smartcase  " ... unless they contain at least one capital letter
 
+
 "Graphical interface options
+"""""""""""""""""""""""""""""
+
+
 syntax enable
 set background=dark "use colors which look good on a dark background
 let g:solarized_termtrans=1
@@ -37,13 +45,38 @@ set showcmd "show partial commands in the last line of the screen
 
 set scrolloff=5 "pad top and bottom of screeen by x lines
 
-"Use 2 spaces instead of tabs
-set softtabstop=4 shiftwidth=4 "a tab is 4 spaces
-set expandtab "uses spaces, not tabs
+
+" Indentation
+"""""""""""""
+
+
+" For indentation without tabs, the principle is to set 'expandtab' and set
+" 'shiftwidth' and 'softtabstop' to the same value, while leaving 'tabstop'
+" at its default value ('tabstop' defines the width of the TAB character).
+
+"a tab is 4 spaces
+set softtabstop=4
+
+" Affects '>>', '<<', '==', and automatic indentation.
+set shiftwidth=4
+
+" When true, inserts 'softtabstop' spaces instead of a tab on <TAB>
+set expandtab
+
+" Changes how <TAB> is interpreted depending on where the cursor is.
+" If true, pressing <TAB> inserts indentation according to 'shiftwidth'
+" at the beginning of a line, whereas 'tabstop' and 'softtabstop' are
+" used everywhere else.
 set smarttab
 
+" Copy the indentation from the previous line when starting a new line
 set autoindent
-set copyindent "when autoindenting, use indent format of previous line
+
+" When autoindenting, copy indent format of previous line
+set copyindent
+
+" Automatically indent when it makes sense
+set smartindent
 
 
 "Use TAB to complete when typing words, else inserts TABs as usual.
@@ -65,7 +98,8 @@ endfunction
 :inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 :set dictionary="/usr/dict/words"
 
-" Use the damn hjkl keys
+
+" Disable the arrow-keys
 map <up> <nop>
 map <down> <nop>
 map <left> <nop>
