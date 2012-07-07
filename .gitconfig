@@ -81,7 +81,7 @@
     # Delete a branch
     delete = branch -d
 
-    remove = !sh -c 'git push origin :$0'
+    accept = !sh -c 'git delete $0 && git push origin :$0'
 
     # Show all merged branches
     merged = branch --merged
