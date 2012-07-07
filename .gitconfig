@@ -8,6 +8,10 @@
     # Use template "!sh -c 'git command $0'" for positional arguments
 
 
+    # Because feedback is important
+    join = add -v
+    append = add -v
+
     # Show an abbreviated status
     stat = status -sb
 
@@ -27,10 +31,13 @@
     amend = commit --amend
 
     # Sync with master
+    # Rebase to keep the commit history clean
     sync = pull --rebase origin master
 
 
     # Unstash a stash
+    # This is preferred over `stash apply` as it actually removes the stash
+    # from the list of stashes
     unstash = stash pop
 
     # See stashes
@@ -43,8 +50,13 @@
     # Show any changes from the last commit
     difflast = diff HEAD^
 
-    # Pretty history
-    history = log --stat --abbrev-commit --graph
+    # Pretty, high/density history
+    # %Ccolor sets a color
+    # %s - subject of a commit
+    # %ad - date of a commit. Respects date option
+    # %an - author of a commit
+    # %h - abbreviated hash
+    hist = log --pretty=format:\"%Cgreen%s %Cred%ad %Cblue[%an] %Creset%h\" --graph --date=relative
 
     # Search historical diffs for a keyword
     pickax = !sh -c 'git log -S$0 --stat'
@@ -68,6 +80,8 @@
 
     # Delete a branch
     delete = branch -d
+
+    remove = !sh -c 'git push origin :$0'
 
     # Show all merged branches
     merged = branch --merged
