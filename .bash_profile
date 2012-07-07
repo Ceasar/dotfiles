@@ -10,7 +10,7 @@ alias rm='rm -v'
 alias mv='mv -v'
 
 # Short alias for grep
-alias f="grep -rn"
+alias f="grep -rn -C 1"
 
 # xargs as I would expec
 alias args="xargs -0"
@@ -30,6 +30,13 @@ alias grep="grep --color=auto"
 
 # Check if the bashrc has been updated and updated it
 alias check='source ~/.bash_profile'
+
+
+# git aliases
+# =============
+
+# Get all of the merged remote branches and remove them
+alias cleanremote='git branch -r --merged | sed 's/.*origin\///' | xargs -n 1 git push origin --delete'
 
 
 # dotfiles
@@ -157,7 +164,7 @@ fi
 # Find all files with name match $1 in $2
 # $ get foo.py src/
 function get {
-    find $2 -type f -name $1
+    find $2 -type f -name "*$1*"
 }
 
 # Replace word $1 with word $2 recursively in $3
@@ -189,8 +196,13 @@ END
 # Reposition the current window to (x, y) (offset from top-left corner)
 function position {
 osascript <<END 
-    tell application "Terminal" to set the position of window 1 to {$2, $3}
+    tell application "Terminal" to set the position of window 1 to {$1, $2}
 END
+}
+
+
+function center {
+    position 3000 720
 }
 
 
