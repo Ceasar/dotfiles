@@ -1,10 +1,25 @@
 # aliases
 # =======
 
+# human
+
+alias copy='cp -r'
+
+alias delete='rm -rvi'
+
+alias goto='cd'
+
+alias now='date'
+
+alias whereami='pwd'
+
+
+# unix
+
 alias redeploy='fab vagrant:franklin-api deploy_api'
 
-# Enable feedback for rm
-alias rm='rm -v'
+# Enable feedback for rm and make it confirm before deleting
+alias rm='rm -vi'
 
 # Enable feedback for mv
 alias mv='mv -v'
@@ -193,16 +208,8 @@ END
 }
 
 
-# Reposition the current window to (x, y) (offset from top-left corner)
-function position {
-osascript <<END 
-    tell application "Terminal" to set the position of window 1 to {$1, $2}
-END
-}
-
-
 function center {
-    position 3000 720
+    MouseTools -location | xargs position
 }
 
 
