@@ -208,11 +208,6 @@ END
 }
 
 
-function center {
-    MouseTools -location | xargs position
-}
-
-
 # Resize the current window to (width, height)
 function resize {
 osascript <<END 
