@@ -13,6 +13,7 @@ alias now='date'
 
 alias whereami='pwd'
 
+alias say='say -v Vicki'
 
 # unix
 
@@ -22,7 +23,7 @@ alias redeploy='fab vagrant:franklin-api deploy_api'
 alias rm='rm -vi'
 
 # Enable feedback for mv
-alias mv='mv -v'
+alias mv='mv -vi'
 
 # Short alias for grep
 alias f="grep -rn -C 1"
@@ -197,13 +198,6 @@ function replace {
 function spawn {
 osascript <<END 
     tell app "Terminal" to do script "$1" 
-END
-}
-
-# Read a string using a computerized voice
-function say {
-osascript <<END 
-    say "$*" 
 END
 }
 
