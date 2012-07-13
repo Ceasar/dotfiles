@@ -51,6 +51,13 @@ alias check='source ~/.bash_profile'
 # git aliases
 # =============
 
+# Get all of the merged local branches and remove them
+# * Gets all merged branches
+# TODO: Change this to find master instead
+# * Searches for everything except the currently checked out branch
+# * Removes leading whitespace
+# * Deletes the branch
+alias clean='git branch --merged | grep -v ^\* | sed "s/^ *//" | xargs -n 1 git accept'
 # Get all of the merged remote branches and remove them
 alias cleanremote='git branch -r --merged | sed 's/.*origin\///' | xargs -n 1 git push origin --delete'
 
