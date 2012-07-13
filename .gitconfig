@@ -12,20 +12,18 @@
     join = add -v
     append = add -v
 
-    # Show an abbreviated status
-    stat = status -sb
+    # Unmodify/Discard a change
+    unmodify = checkout HEAD --
+    discard = checkout HEAD --
 
-    # Stage everything
-    prepare = add . -vA
+    # Undo add (move changes from index to working directory)
+    unstage = reset HEAD
 
-    # Discard a change
-    discard = checkout --
-
-    # Unstage a file
-    unstage = reset HEAD --
-
-    # Undo the last commit
+    # Undo the previous commit, and leave the changes in the index
     uncommit = reset --soft HEAD^
+
+    # Undo the latest commit, and leave the changes in the working directory
+    # uncommit = reset HEAD^
 
     # Amend the last commit
     amend = commit --amend
@@ -58,36 +56,53 @@
     # %h - abbreviated hash
     hist = log --pretty=format:\"%Cgreen%s %Cred%ad %Cblue[%an] %Creset%h\" --graph --date=relative
 
-    # Search historical diffs for a keyword
-    pickax = !sh -c 'git log -S$0 --stat'
-
 
     # Start a branch
     start = checkout -b
 
+    # Continue working on a branch
+    resume = checkout
+
     # Finish a branch
     finish = push origin
+
+    # Delete and remove a branch after it is accepted
+    accept = !sh -c 'git delete $0 && git remove $0'
 
 
     # Switch to master
     master = checkout master
 
-    # Create a branch
+    # Create a branch and switch to it
     create = checkout -b
-
-    # Continue working on a branch
-    resume = checkout
 
     # Delete a branch
     delete = branch -d
 
-    accept = !sh -c 'git delete $0 && git push origin :$0'
+    # Remove a remote branch
+    remove = !sh -c 'git push origin :$0'
 
     # Show all merged branches
     merged = branch --merged
 
     # Show all unmerged branches
     unmerged = branch --no-merged
+
+    # Show all of the branches
+    list = branch
+    branches = branch
+
+    # Rename a branch
+    rename = branch -m
+
+
+    # Search historical diffs for a keyword
+    pickax = !sh -c 'git log -S$0 --stat'
+
+    # Bend master at $0, moving all commits after $0 onto branch $1
+    # * Create branch $1 (but do not switch to it)
+    # * Point the current branch at $0 keeping local index and working directory intact
+    bend = !sh -c 'git branch $1 && git reset --soft $0'
 
 
 [color]
