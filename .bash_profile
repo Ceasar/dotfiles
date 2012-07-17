@@ -17,10 +17,11 @@ alias say='say -v Vicki'
 
 # unix
 
-alias redeploy='fab vagrant:franklin-api deploy_api'
-
 # Enable feedback for rm and make it confirm before deleting
 alias rm='rm -vi'
+
+# Enable feedback for cp
+alias cp='cp -vi'
 
 # Enable feedback for mv
 alias mv='mv -vi'
@@ -41,6 +42,15 @@ alias l='ls'
 # Automatically add color and slashes after directories
 alias ls='ls -FG'
 
+# Automatically add color and slashes after directories
+alias la='ls -FGa'
+
+# Automatically add color and slashes after directories
+alias ll='ls -FGls'
+
+# List all files by relative path
+alias lr="find . -type f | sed "s#^./##""
+
 # Automatically highlight matches
 alias grep="grep --color=auto"
 
@@ -59,7 +69,11 @@ alias check='source ~/.bash_profile'
 # * Deletes the branch
 alias clean='git branch --merged | grep -v ^\* | sed "s/^ *//" | xargs -n 1 git accept'
 # Get all of the merged remote branches and remove them
-alias cleanremote='git branch -r --merged | sed 's/.*origin\///' | xargs -n 1 git push origin --delete'
+# * Gets all remote merged branches
+# * Strips out prefix (gets just the branch name)
+# * Removes master from the list
+# * Deletes branch
+alias cleanremote='git branch -r --merged | sed "s/.*origin\///" | grep -v ^master$  | xargs -n 1 git push origin --delete'
 
 
 # dotfiles
@@ -186,8 +200,15 @@ fi
 
 # Find all files with name match $1 in $2
 # $ get foo.py src/
-function get {
-    find $2 -type f -name "*$1*"
+
+alias search="/usr/bin/find"
+function find {
+    if [[ -n "$1" && -n "$2" ]]
+    then
+        /usr/bin/find $2 -type f -name "*$1*"
+    else
+        echo "usage: find [expression] [directory]"
+    fi
 }
 
 # Replace word $1 with word $2 recursively in $3
