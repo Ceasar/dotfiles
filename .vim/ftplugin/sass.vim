@@ -5,7 +5,7 @@ set foldenable
 set foldmethod=indent
 
 " Don't open folds when searching into them
-set foldopen-=search
+" set foldopen-=search
 
 " Don't open folds when undoing things
 set foldopen-=undo
