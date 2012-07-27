@@ -26,8 +26,14 @@ alias cp='cp -vi'
 # Enable feedback for mv
 alias mv='mv -vi'
 
+# Short alias for cd
+alias c='cd'
+
 # Short alias for grep
 alias f="grep -rn -C 1"
+
+# Short alias for ls
+alias l='ls'
 
 # xargs as I would expec
 alias args="xargs -0"
@@ -35,9 +41,6 @@ alias args="xargs -0"
 # cd quickly 
 alias ..='cd ..'
 alias ...='cd ../..'
-
-# Since I accidentally type l instead of ls
-alias l='ls'
 
 # Automatically add color and slashes after directories
 alias ls='ls -FG'
@@ -197,6 +200,10 @@ fi
 # functions
 # =========
 
+function class {
+    f "class.*$1" $2
+}
+
 
 # Find all files with name match $1 in $2
 # $ get foo.py src/
@@ -211,24 +218,9 @@ function find {
     fi
 }
 
-# Replace word $1 with word $2 recursively in $3
-# $ replace foo bar templates/
-function replace {
-    perl -e "s/$1/$2/g;" -pi $(find $3 -type f)
-}
-
 
 # mac-specific functions
 # ----------------------
-
-# Spawn a new terminal window and run the command $1
-# $ spawn ls
-function spawn {
-osascript <<END 
-    tell app "Terminal" to do script "$1" 
-END
-}
-
 
 # Resize the current window to (width, height)
 function resize {
@@ -250,6 +242,18 @@ function pause {
 osascript <<END 
     tell application "Spotify" to playpause
 END
+}
+
+
+# Replace word $1 with word $2 recursively in $3
+# $ replace foo bar templates/
+function replace {
+    if [[ -n "$1" && -n "$2" && -n "$3" ]]
+    then
+        perl -e "s/$1/$2/g;" -pi $(find $3 -type f)
+    else
+        echo "usage: replace [to_replace] [replacement] [directory]"
+    fi
 }
 
 
