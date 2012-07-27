@@ -17,3 +17,19 @@ Config files for the various programs I use. Namely,
 Also has config files for programs I no longer use including:
 
 *   Bash (replaced by Fish)
+
+
+Setup
+=====
+
+General
+-------
+*   Clone this repository to the home directory.
+*   Download Solarized and double click the .terminal files inside of the
+    osx-termianl-colors-solarized directory. Then go to
+    "Terminal > Preferences > Startup" and change the settings to Solarized.
+
+Vim
+---
+*   Install Pathogen for Vim.
+*   Install each plugin in `.vim/bundle`.
