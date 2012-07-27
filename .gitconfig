@@ -12,6 +12,8 @@
     join = add -v
     append = add -v
 
+    remotes = remote -v
+
     # Unmodify/Discard a change
     unmodify = checkout HEAD --
     discard = checkout HEAD --
@@ -28,19 +30,36 @@
     # Amend the last commit
     amend = commit --amend
 
-    # Sync with master
-    # Rebase to keep the commit history clean
-    sync = pull --rebase origin master
+    # Squash multiple commits into one
+    # Must provide argument in the form HEAD~$1 where $1 is the
+    # number of commits to squash together (including the one you
+    # wish to keep). In other words, if you wish to squash the last
+    # commit into the one before it, use 'git squash HEAD~2'.
+    #
+    # NOTE: Do not squash commits that you've shared with other.
+    # Squashing changes history and will cause trouble when merging.
+    squash = rebase -i
 
+    # Sync with master
+    # Rebase the current branch on top of upstream after fetching.
+    # Show diff stat at the end.
+    sync = pull --stat --rebase origin master
+
+
+    # Stashes
+    # =======
 
     # Unstash a stash
     # This is preferred over `stash apply` as it actually removes the stash
     # from the list of stashes
     unstash = stash pop
 
-    # See stashes
+    # Show all stashes
     stashes = stash list
 
+
+    # History
+    # =======
 
     # Show the last commit
     last = log -1 HEAD --stat --abbrev-commit
@@ -55,6 +74,13 @@
     # %an - author of a commit
     # %h - abbreviated hash
     hist = log --pretty=format:\"%Cgreen%s %Cred%ad %Cblue[%an] %Creset%h\" --graph --date=relative
+
+    # Search historical commits for a keyword
+    greplog = !sh -c 'git log --grep=$0'
+
+    # Search historical diffs for a keyword
+    grepdiff = !sh -c 'git log -S$0 --stat'
+    pickax = !sh -c 'git log -S$0 --stat'
 
 
     # Start a branch
@@ -88,16 +114,13 @@
     # Show all unmerged branches
     unmerged = branch --no-merged
 
-    # Show all of the branches
+    # Show all branches
     list = branch
     branches = branch
 
     # Rename a branch
     rename = branch -m
 
-
-    # Search historical diffs for a keyword
-    pickax = !sh -c 'git log -S$0 --stat'
 
     # Bend master at $0, moving all commits after $0 onto branch $1
     # * Create branch $1 (but do not switch to it)
