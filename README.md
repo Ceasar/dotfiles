@@ -25,9 +25,16 @@ Setup
 General
 -------
 *   Clone this repository to the home directory.
-*   Download Solarized and double click the .terminal files inside of the
-    osx-termianl-colors-solarized directory. Then go to
-    "Terminal > Preferences > Startup" and change the settings to Solarized.
+
+iTerm
+-----
+*   Download [iTerm](http://code.google.com/p/iterm2/).
+*   Download [Solarized](http://ethanschoonover.com/solarized) and then from iTerm preferences, go to Colors
+    choose import and then select the colors from the solarized directory.
+
+tmux
+----
+*   `brew install tmux`
 
 Vim
 ---
