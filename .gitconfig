@@ -49,10 +49,13 @@
     # Stashes
     # =======
 
-    # Unstash a stash
-    # This is preferred over `stash apply` as it actually removes the stash
-    # from the list of stashes
-    unstash = stash pop
+    # unstash [-q|--quiet] [<stash>]
+    # `apply` a stash and then `drop` it immediately from the stack.
+    # Additionally we use the index option to restage any files that might
+    # have been staged
+    # When no <stash> is given, stash@{0} is assumed, otherwise <stash>
+    # must be a reference of the form stash@{<revision>}.
+    unstash = stash pop --index
 
     # Show all stashes
     stashes = stash list
@@ -63,6 +66,7 @@
 
     # Show the last commit
     last = log -1 HEAD --stat --abbrev-commit
+    showlast = log -1 HEAD --stat --abbrev-commit
 
     # Show any changes from the last commit
     difflast = diff HEAD^
@@ -148,3 +152,5 @@
     date = relative
 
     decorate
+[core]
+	editor = vim
