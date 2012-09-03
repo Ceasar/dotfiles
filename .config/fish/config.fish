@@ -1,5 +1,7 @@
 # Make fish compatible with solarized
 set TERM xterm-256color
+center
+cd ~/franklin/frontend
 
 # Set the title of the window
 function fish_title
@@ -13,24 +15,6 @@ function fish_prompt
     else
         printf '%s%s%s $ ' (set_color $fish_color_cwd) (prompt_pwd) (set_color normal)
     end
-end
-
-# Decorate cd to ls afterward.
-function cd
-    cd $argv
-    ls
-end
-
-function l -d "Short alias for ls"
-    ls
-end
-
-function list -d "Alias for ls"
-    ls
-end
-
-function show -d "Alias for ls"
-    ls
 end
 
 function reload -d "Reload fish config file"
