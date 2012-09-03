@@ -38,5 +38,5 @@ tmux
 
 Vim
 ---
-*   Install Pathogen for Vim.
+*   Install [Pathogen](https://github.com/tpope/vim-pathogen) for Vim.
 *   Install each plugin in `.vim/bundle`.
