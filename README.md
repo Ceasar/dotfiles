@@ -43,8 +43,14 @@ Vim
 
 node
 ----
-*   Download [node.js](http://nodejs.org/#download)
+*   Download [node.js](http://nodejs.org/#download).
 
 coffeescript
 ------------
-*   Download [coffeescript](http://coffeescript.org/#installation)
+*   Download [coffeescript](http://coffeescript.org/#installation).
+
+heroku
+------
+*   Download [heroku toolbelt](https://toolbelt.heroku.com/).
+*   Login. (`heroku login`)
+*   Set up [ssh keys](https://devcenter.heroku.com/articles/keys) (`heroku keys:add`).
