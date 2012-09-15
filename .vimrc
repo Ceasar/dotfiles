@@ -27,11 +27,7 @@ set smartcase  " ... unless they contain at least one capital letter
 
 
 syntax enable
-set background=dark "use colors which look good on a dark background
-let g:solarized_termtrans=1
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
+set background=light "use colors which look good on a light background
 colorscheme solarized
 set colorcolumn=80
 
@@ -105,3 +101,19 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" turn-on distraction free writing mode for markdown files
+au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
+
+function! DistractionFreeWriting()
+    set wrap " make long lines wrap around to the next line
+    set linebreak " break the lines on words rather than arbitrary characters
+    set nolist " don't show list
+    set noruler " don't show ruler
+    set nonumber " don't show line number
+    set laststatus=0 " don't show status line
+endfunction
+
+
+" Use javascript syntax highlighting for json
+autocmd BufNewFile,BufRead *.json set ft=javascript
