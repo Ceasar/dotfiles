@@ -40,3 +40,11 @@ Vim
 ---
 *   Install [Pathogen](https://github.com/tpope/vim-pathogen) for Vim.
 *   Install each plugin in `.vim/bundle`.
+
+node
+----
+*   Download [node.js](http://nodejs.org/#download)
+
+coffeescript
+------------
+*   Download [coffeescript](http://coffeescript.org/#installation)
