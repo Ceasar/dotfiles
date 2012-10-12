@@ -25,9 +25,10 @@ set smartcase  " ... unless they contain at least one capital letter
 "Graphical interface options
 """""""""""""""""""""""""""""
 
+set mouse=a "allow scrolling in iTerm
 
 syntax enable
-set background=light "use colors which look good on a light background
+set background=dark "use colors which look good on a light background
 colorscheme solarized
 set colorcolumn=80
 
