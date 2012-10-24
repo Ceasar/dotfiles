@@ -22,7 +22,10 @@
     unstage = reset HEAD
 
     # Undo the previous commit, and leave the changes in the index
+    # To undo _this_, check the reflog then git reset --hard the commit
+    # See: http://stackoverflow.com/questions/5473/undoing-a-git-reset-hard-head1
     uncommit = reset --soft HEAD^
+
 
     # Undo the latest commit, and leave the changes in the working directory
     # uncommit = reset HEAD^
@@ -44,6 +47,11 @@
     # Rebase the current branch on top of upstream after fetching.
     # Show diff stat at the end.
     sync = pull --stat --rebase origin master
+
+    # Sync with master and push to master
+    # Rebase the current branch on top of upstream after fetching.
+    # Show diff stat at the end.
+    syncup = !sh -c 'git sync && git push origin master'
 
 
     # Stashes
