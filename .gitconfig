@@ -26,6 +26,9 @@
     # See: http://stackoverflow.com/questions/5473/undoing-a-git-reset-hard-head1
     uncommit = reset --soft HEAD^
 
+    # Abort a merge
+    abort = merge --abort
+
 
     # Undo the latest commit, and leave the changes in the working directory
     # uncommit = reset HEAD^
