@@ -8,14 +8,19 @@
     # Use template "!sh -c 'git command $0'" for positional arguments
 
 
-    # Because feedback is important
+    # Verbose add
     join = add -v
+
+    # Verbose add
     append = add -v
 
+    # Show remotes
     remotes = remote -v
 
     # Unmodify/Discard a change
     unmodify = checkout HEAD --
+
+    # Unmodify/Discard a change
     discard = checkout HEAD --
 
     # Undo add (move changes from index to working directory)
@@ -77,6 +82,8 @@
 
     # Show the last commit
     last = log -1 HEAD --stat --abbrev-commit
+
+    # Show the last commit
     showlast = log -1 HEAD --stat --abbrev-commit
 
     # Show any changes from the last commit
@@ -95,6 +102,8 @@
 
     # Search historical diffs for a keyword
     grepdiff = !sh -c 'git log -S$0 --stat'
+
+    # Search historical diffs for a keyword
     pickax = !sh -c 'git log -S$0 --stat'
 
 
@@ -106,9 +115,6 @@
 
     # Finish a branch
     finish = push origin
-
-    # Delete and remove a branch after it is accepted
-    accept = !sh -c 'git delete $0 && git remove $0'
 
 
     # Switch to master
@@ -123,6 +129,9 @@
     # Remove a remote branch
     remove = !sh -c 'git push origin :$0'
 
+    # Delete and remove a branch after it is accepted
+    accept = !sh -c 'git delete $0 && git remove $0'
+
     # Show all merged branches
     merged = branch --merged
 
@@ -131,15 +140,21 @@
 
     # Show all branches
     list = branch
+
+    # Show all branches
     branches = branch
 
     # Rename a branch
     rename = branch -m
 
+    # Reset <branchname>, $0, to <commit>, $1, if <branchname> exists already.
+    # Without -f git branch refuses to change an existing branch.
+    movebranch = git branch -f
 
-    # Bend master at $0, moving all commits after $0 onto branch $1
+    # Bend current branch at $0, moving all commits after $0 onto branch $1
     # * Create branch $1 (but do not switch to it)
-    # * Point the current branch at $0 keeping local index and working directory intact
+    # * Point the current branch at $0 (keeping local index and working
+    #   directory intact)
     bend = !sh -c 'git branch $1 && git reset --soft $0'
 
 
