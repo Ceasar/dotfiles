@@ -1,3 +1,6 @@
+# If a machine tries to use bash, make it use zsh
+zsh
+
 # aliases
 # =======
 
