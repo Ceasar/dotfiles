@@ -25,17 +25,28 @@ set smartcase  " ... unless they contain at least one capital letter
 "Graphical interface options
 """""""""""""""""""""""""""""
 
+set foldmethod=indent
 set mouse=a "allow scrolling in iTerm
 
 syntax enable
 set background=dark "use colors which look good on a light background
 colorscheme solarized
-if v:version >= 730
-    set colorcolumn=80
+if exists("&colorcolumn")
+    " display a colored column in column 80
+    set colorcolumn=81
+    "color of ruler @ 80 col, 2=green, 0=light gray
+    highlight ColorColumn ctermbg=0
 endif
 
+"highlight any characters past 80
+"match ErrorMsg '\%>80v.\+'
+
+"automatically wrap around at the 80 character limit
+set textwidth=80
+" dont wrap (no need)
+set nowrap
+
 "set columns=80 "set the number of columns used on the screen
-set nowrap "don't wrap lines
 
 set list "print hidden characters
 set number "display line number on left
