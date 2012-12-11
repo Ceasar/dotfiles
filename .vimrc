@@ -30,7 +30,9 @@ set mouse=a "allow scrolling in iTerm
 syntax enable
 set background=dark "use colors which look good on a light background
 colorscheme solarized
-set colorcolumn=80
+if v:version >= 730
+    set colorcolumn=80
+endif
 
 "set columns=80 "set the number of columns used on the screen
 set nowrap "don't wrap lines
