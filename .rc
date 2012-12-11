@@ -1,3 +1,5 @@
+# non-shell-specific runcom
+
 # cd quickly 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -105,4 +107,4 @@ export PATH=/Users/ceasarbautista/Library/Haskell/ghc-7.4.1/lib/ghc-mod-1.11.0/b
 export PGDATA='/usr/local/var/postgres'
 
 # Check for the existence of a machine specific .profile file and source that
-[ -r ~/.profile.local ] && source ~/.profile.local
+[ -r ~/.localrc ] && source ~/.localrc

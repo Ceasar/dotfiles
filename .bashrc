@@ -1,6 +1,6 @@
 # Source file for interactive non-login (local) shells
 
-source ~/.profile
+source ~/.rc
 
 # colors
 # ======
