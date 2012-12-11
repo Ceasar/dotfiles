@@ -270,4 +270,6 @@ function replace {
 # * Cmd + W to close a window
 # * Cmd + ` to switch windows within an application
 
-alias eniac="ssh ceasarb@eniac.seas.upenn.edu"
+
+# Check for the existence of a machine specific .bashrc file and source that
+[ -r ~/.bashrc.local ] && source ~/.bashrc.local
