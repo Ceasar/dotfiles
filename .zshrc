@@ -35,25 +35,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-# Rearrange default order of path
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin
-# Enable syntastic to work with Haskell in Vim
-export PATH=/Users/ceasarbautista/Library/Haskell/ghc-7.4.1/lib/ghc-mod-1.11.0/bin:$PATH
-
-# Postgres stuff
-export PGDATA='/usr/local/var/postgres'
-alias pgstart='pg_ctl -l $PGDATA/server.log start'
-alias pgstop='pg_ctl stop -m fast'
-
-alias pingme="ping google.com"
-alias pypi="sudo python setup.py register sdist bdist_wininst upload"
-
-alias git="g"
-alias gs="git status"
-alias v="vim"
-alias c="cd"
-alias ce="center"
-
+source ~/.profile
 
 # Automatically `ls` after each `cd`
 function chpwd() {
