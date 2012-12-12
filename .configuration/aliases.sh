@@ -51,7 +51,7 @@ alias la='ls -a'
 alias ll='ls -l'
 
 # List filenames by relative path
-alias lr="find . -type f | sed "s#^./##""
+alias lr='find . -type f | sed "s#^./##"'
 
 # Add color
 alias ls='ls -G'
