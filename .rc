@@ -1,20 +1,16 @@
-# non-shell-specific runcom
+# machine and shell independent runcom
 
 # cd quickly 
 alias ..='cd ..'
+
+# cd quickly 
 alias ...='cd ../..'
 
-# xargs as I would expec
+# more intuitive xargs
 alias args="xargs -0"
 
-# Modify the bashrc from anywhere
-alias bashrc='vim ~/.bash_profile; check'
-
-# Short alias for cd
+# Short alias
 alias c='cd'
-
-# Check if the bashrc has been updated and updated it
-alias check='source ~/.bash_profile'
 
 # Get all of the merged local branches and remove them
 # * Gets all merged branches
@@ -31,80 +27,79 @@ alias clean='git branch --merged | grep -v ^\* | sed "s/^ *//" | xargs -n 1 git 
 # * Deletes branch
 alias cleanremote='git branch -r --merged | sed "s/.*origin\///" | grep -v ^master$  | xargs -n 1 git push origin --delete'
 
+# Long alias
 alias copy='cp -r'
 
-# Enable feedback for cp
-alias cp='cp -vi'
+# Make copying interactive and verbose
+alias cp='cp -iv'
 
-alias delete='rm -rvi'
+# Long alias
+alias delete='rm'
 
-# Short alias for grep
+# Grep recursively. Show line numbers and one line of context on either side.
 alias f="grep -rn -C 1"
 
+# Short alias
 alias g="git"
 
 # Modify the gitconfig from anywhere
 alias gitconfig='vim ~/.gitconfig'
 
+# Long alias
 alias goto='cd'
 
 # Automatically highlight matches
 alias grep="grep --color=auto"
 
+# Short alias
 alias gs="git status"
 
-# Short alias for ls
+# Short alias
 alias l='ls'
 
-# Automatically add color and slashes after directories
-alias la='ls -FGa'
+# Show hidden files
+alias la='ls -a'
 
-# Automatically add color and slashes after directories
-alias ll='ls -FGls'
+# Show metadata and where symlinks point to
+alias ll='ls -l'
 
-# List all files by relative path
+# List filenames by relative path
 alias lr="find . -type f | sed "s#^./##""
 
-# Automatically add color and slashes after directories
-alias ls='ls -FG'
+# Add color
+alias ls='ls -G'
 
-# Enable feedback for mv
-alias mv='mv -vi'
+# Make move interactive and verbose
+alias mv='mv -iv'
 
+# Synonym
 alias now='date'
 
 # Check Internet connection
 alias pingme="ping google.com"
 
-# Start postgres
-alias pgstart='pg_ctl -l $PGDATA/server.log start'
+# Modify this file from anywhere easily
+alias rc='vim ~/.rc; source ~/.rc'
 
-# Stop postgres
-alias pgstop='pg_ctl stop -m fast'
-
-# Register a python project on pypi
-alias pypi="sudo python setup.py register sdist bdist_wininst upload"
-
-# Enable feedback for rm and make it confirm before deleting
-alias rm='rm -vi'
+# Make rm interactive and verbose
+alias rm='rm -iv'
 
 # Analogous to `whoami`
 alias whereami='pwd'
 
+# Short alias
 alias v="vim"
 
 # Modify the vimrc from anywhere
 alias vimrc='vim ~/.vimrc'
 
-
 # Rearrange default order of path
+# TODO: Why?
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11R6/bin
 
 # Enable syntastic to work with Haskell in Vim
-export PATH=/Users/ceasarbautista/Library/Haskell/ghc-7.4.1/lib/ghc-mod-1.11.0/bin:$PATH
-
-# Postgres stuff
-export PGDATA='/usr/local/var/postgres'
+# TODO: Only do this if Haskell is installed
+export PATH=$HOME/Library/Haskell/ghc-7.4.1/lib/ghc-mod-1.11.0/bin:$PATH
 
 # Check for the existence of a machine specific .profile file and source that
 [ -r ~/.localrc ] && source ~/.localrc

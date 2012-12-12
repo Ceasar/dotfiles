@@ -2,6 +2,9 @@
 
 source ~/.rc
 
+# Modify the bashrc from anywhere
+alias bashrc='vim ~/.bashrc; source ~/.bashrc'
+
 # colors
 # ======
 

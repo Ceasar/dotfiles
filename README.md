@@ -1,30 +1,50 @@
+# dotfiles
 
+Collection of configuration files for various programs. Namely:
 
-Config Files
-============
-
-Config files for the various programs I use. Namely,
-
-*   [Fish](http://ridiculousfish.com/shell/) (shell). Fish is fast, has awesome
-    command-line completion, color, and a more refined scripting language than
-    Bash. Also considered zsh, but Fish was dead simple to install.
-*   [Vim](http://www.vim.org/download.php) (file editing). Somewhat archaic,
-    Vim is still my text editor of choice because it offers superior typing
-    speed and is easily accesible from the command line. Combined with the
-    right plugins, it can match any text editor out there.
-*   Git (source control)
+*   Zsh.
+*   [Vim](http://www.vim.org/download.php).
+*   Git
 
 Also has config files for programs I no longer use including:
 
-*   Bash (replaced by Fish)
+*   Bash
+*   [Fish](http://ridiculousfish.com/shell/). Fish is fast, has awesome
+    command-line completion, color, and a more refined scripting language than
+    Bash. It is too unstable for my preferences at the moment though.
 
 
-Setup
-=====
+# Goals
 
-General
--------
-*   Clone this repository to the home directory.
+## Portability
+
+The advantage of having my config files on a remote repo is that I can clone them to remote machines and maintain close to my exact settings anywhere. No need to relearn aliases.
+
+## Accumulated Knowledge
+
+Unix is confusing and not discoverable. Therefore, as much as possible,
+everything should be documented and accumulated in order to avoid having to
+relearn anything.
+
+## Shell independence
+
+Wherever possible, aliases and exports should be shell independent. This is
+important because sometimes I might not have access to certain shells on
+certain machines.
+
+To facilitate this, each shell of interest should source the `.rc` file when
+relevant, and all aliases should go in there.
+
+### Machine independence
+
+Occasionally I have commands that only make sense on one-machine. These
+commands are not included in this repo (and should not be). The point of this
+repo is to have a universal setup on whatever machine I'm using.
+
+This could be a problem if I just were to dump all my aliases inside of the `.rc` file. To fix this, machine-specific configuration files should go into a `.localrc` file, which `.rc` sources at the bottom.
+
+
+# Apps
 
 iTerm
 -----
