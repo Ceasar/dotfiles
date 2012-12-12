@@ -75,35 +75,3 @@ commands are not included in this repo (and should not be). The point of this
 repo is to have a universal setup on whatever machine I'm using.
 
 This could be a problem if I just were to dump all my aliases inside of the `.rc` file. To fix this, machine-specific configuration files should go into a `.localrc` file, which `.rc` sources at the bottom.
-
-
-# Apps
-
-iTerm
------
-*   Download [iTerm](http://code.google.com/p/iterm2/).
-*   Download [Solarized](http://ethanschoonover.com/solarized) and then from iTerm preferences, go to Colors
-    choose import and then select the colors from the solarized directory.
-
-tmux
-----
-*   `brew install tmux`
-
-Vim
----
-*   Install [Pathogen](https://github.com/tpope/vim-pathogen) for Vim.
-*   Install each plugin in `.vim/bundle`.
-
-node
-----
-*   Download [node.js](http://nodejs.org/#download).
-
-coffeescript
-------------
-*   Download [coffeescript](http://coffeescript.org/#installation).
-
-heroku
-------
-*   Download [heroku toolbelt](https://toolbelt.heroku.com/).
-*   Login. (`heroku login`)
-*   Set up [ssh keys](https://devcenter.heroku.com/articles/keys) (`heroku keys:add`).
