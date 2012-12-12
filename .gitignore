@@ -3,8 +3,4 @@
 venv
 *.pyc
 
-.localrc
-
-.sh_history
-.zsh_history
-.bash_history
+.vim/bundle

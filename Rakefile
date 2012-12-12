@@ -3,7 +3,7 @@ files = Hash.new
 files[:git]  = %w(.gitconfig)
 files[:bash] = %w(.bash_profile .bashrc)
 files[:misc] = %w(.configuration .rc.sh .tmux.conf)
-files[:vim]  = %w(.vimrc)
+files[:vim]  = %w(.vim .vimrc)
 files[:zsh]  = %w(.zshrc)
 
 $vim_bundles = {
