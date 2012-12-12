@@ -35,7 +35,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 
-source ~/.rc
+source ~/.rc.sh
 
 # Automatically `ls` after each `cd`
 function chpwd() {
