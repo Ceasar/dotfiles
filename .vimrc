@@ -7,7 +7,8 @@ filetype plugin on " enable filetype specific plugins
 filetype indent on
 set spell spelllang=en_us " enable spell-check
 
-set hidden "use .swp files
+" Allow hidden buffer
+set hidden 
 set wildmenu "command-line completion
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
@@ -33,7 +34,8 @@ set background=dark "use colors which look good on a light background
 colorscheme solarized
 if exists("&colorcolumn")
     " display a colored column in column 80
-    set colorcolumn=81
+    autocmd InsertEnter * set colorcolumn=81
+    autocmd InsertLeave * set colorcolumn=""
     "color of ruler @ 80 col, 2=green, 0=light gray
     highlight ColorColumn ctermbg=0
 endif
@@ -115,6 +117,10 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
+
+" Use jj to get back to command mode instead of Esc, which is out of the
+" " way and on some keyboards hard to reach. Esc still works too.
+inoremap jj <esc>
 
 " turn-on distraction free writing mode for markdown files
 au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
