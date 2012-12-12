@@ -141,3 +141,14 @@ def vim_bundle_updater
     $vim_do_updates = true
     vim_bundle_installer
 end
+
+# clean out old vim bundles
+def vim_bundle_cleanup
+    bundle_path = "#{ENV['HOME']}/.vim/bundle"
+    Dir["#{bundle_path}/*"].each do |d|
+        unless $vim_bundles[File.basename d]
+            puts "    cleaning up bundle #{File.basename d}"
+            FileUtils.rm_rf d
+        end
+    end
+end

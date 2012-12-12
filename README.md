@@ -14,6 +14,39 @@ Also has config files for programs I no longer use including:
     Bash. It is too unstable for my preferences at the moment though.
 
 
+# Installation
+
+    git clone https://github.com/Ceasar/dotfiles.git
+
+To install my dotfiles as *your* dotfiles, you can create symlinks with `rake`. If you do *not* run the rake command, everything will be isolated inside of the `.dotfiles` directory and will not interfere with your existing environment.
+
+    rake install:all
+
+Rake will ask you before overwriting any files that already exist.
+
+You can also install subsets of the environment using one of the following.
+
+    rake install:bash
+    rake install:zsh
+    rake install:vim
+    rake install:git
+
+Credit to @tangledhelix for this idea (and many others).
+
+# Updating
+
+I periodically change the Vim bundles I use. There are two rake tasks for Vim.
+
+The first updates the bundles from their repositories.
+
+    rake update:vim
+
+The second cleans up any bundles which are no longer known to `Rakefile`.
+
+    rake cleanup:vim
+
+Credit again to @tangledhelix.
+
 # Goals
 
 ## Portability
