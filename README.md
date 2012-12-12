@@ -55,23 +55,16 @@ The advantage of having my config files on a remote repo is that I can clone the
 
 ## Accumulated Knowledge
 
-Unix is confusing and not discoverable. Therefore, as much as possible,
-everything should be documented and accumulated in order to avoid having to
-relearn anything.
+Many existing interfaces for various tools are confusing, undiscoverable, and not worth remembering. Therefore, as much as possible, everything should be documented and stored in order to avoid having to relearn anything.
 
 ## Shell independence
 
-Wherever possible, aliases and exports should be shell independent. This is
-important because sometimes I might not have access to certain shells on
-certain machines.
+Wherever possible, aliases and exports should be shell independent. This is important because sometimes I might not have access to certain shells on certain machines.
 
-To facilitate this, each shell of interest should source the `.rc` file when
-relevant, and all aliases should go in there.
+To facilitate this, each shell of interest should source the `.rc` file when relevant, and all aliases should go in there.
 
 ### Machine independence
 
-Occasionally I have commands that only make sense on one-machine. These
-commands are not included in this repo (and should not be). The point of this
-repo is to have a universal setup on whatever machine I'm using.
+Occasionally I have commands that only make sense on one-machine. These commands are not included in this repo (and should not be). The point of this repo is to have a universal setup on whatever machine I'm using.
 
 This could be a problem if I just were to dump all my aliases inside of the `.rc` file. To fix this, machine-specific configuration files should go into a `.localrc` file, which `.rc` sources at the bottom.
