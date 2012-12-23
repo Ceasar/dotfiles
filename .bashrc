@@ -13,28 +13,6 @@ alias bashrc='vim ~/.bashrc; source ~/.bashrc'
 export CLICOLOR=1
 export TERM="xterm-256color" # used for solarized
 
-# The color designators are as follows:
-# 
-# a     black
-# b     red
-# c     green
-# d     brown
-# e     blue
-# f     magenta
-# g     cyan
-# h     light grey
-# x     default foreground or background
-# Capitalize to make bold
-# See man ls -> LSCOLORS for help
-directory="gx"
-symlink="fx"
-socket="hx"
-pipe="hx"
-executable="ex"
-others="hxhxhxhxhxhx"
-
-export LSCOLORS=$directory$symlink$socket$pipe$executable$others
-
 
 # To add colors to the shell prompt use the following export command syntax:
 # '\e[x;y;zm'

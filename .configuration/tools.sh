@@ -37,6 +37,8 @@ test -n "$HAVE_TMUX" && {
 test -n "$HAVE_VIM" && {
     export EDITOR="vim"
     export VISUAL=$EDITOR
+    # Enable syntastic to work with Haskell in Vim
+    export PATH=$PATH:$HOME/Library/Haskell/ghc-7.4.1/lib/ghc-mod-1.11.0/bin
 
     # Modify the vimrc from anywhere
     alias vi='vim'
