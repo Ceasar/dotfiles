@@ -31,6 +31,9 @@ test -n "$HAVE_GIT" && {
 }
 
 test -n "$HAVE_TMUX" && {
+    # Make tmux source each time it's run
+    alias tmux="tmux source-file ~/.tmux.conf && tmux"
+
     # Modify the tmux.conf from anywhere
     alias tmuxrc='$EDITOR ~/.tmux.conf'
 }
