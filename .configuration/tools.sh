@@ -2,6 +2,7 @@
 HAVE_GIT=$(command -v git 2>/dev/null)
 HAVE_TMUX=$(command -v tmux 2>/dev/null)
 HAVE_VIM=$(command -v vim 2>/dev/null)
+HAVE_VIRTUALENVWRAPPER=$(pip freeze | grep virtualenvwrapper 1>/dev/null)
 
 test -n "$HAVE_GIT" && {
     # Get all of the merged local branches and remove them
@@ -45,4 +46,18 @@ test -n "$HAVE_VIM" && {
 
     # Modify the vimrc from anywhere
     alias vimrc='$EDITOR ~/.vimrc'
+}
+
+test -z "$HAVE_VIRTUALENVWRAPPER" && {
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Devel
+    source /usr/local/bin/virtualenvwrapper.sh
+    # workon local
+    # Quick-Start
+    # 1. `workon`
+    # 2. A list of environments, empty, is printed
+    # 3. `mkvirtualenv temp`
+    # 4. A new environment, temp, is created and activated
+    # 5. `workon`
+    # 6. This time, the `temp` environment is included
 }
