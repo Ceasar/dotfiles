@@ -66,9 +66,10 @@ for _this in \
   ~/bin \
   /usr/local/bin \
   /usr/bin \
-  /bin \
   /usr/sbin \
-  /usr/X11R6/bin
+  /usr/X11R6/bin \
+  /bin \
+  /sbin
 do
   test -d $_this && {
     test -n "$PATH" && PATH="$PATH:$_this" || PATH="$_this"
