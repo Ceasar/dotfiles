@@ -1,5 +1,6 @@
 
 HAVE_GIT=$(command -v git 2>/dev/null)
+HAVE_PYTHON=$(command -v python 2>/dev/null)
 HAVE_TMUX=$(command -v tmux 2>/dev/null)
 HAVE_VIM=$(command -v vim 2>/dev/null)
 HAVE_VIRTUALENVWRAPPER=$(pip freeze | grep virtualenvwrapper 1>/dev/null)
@@ -36,6 +37,11 @@ test -n "$HAVE_TMUX" && {
 
     # Modify the tmux.conf from anywhere
     alias tmuxrc='$EDITOR ~/.tmux.conf'
+}
+
+test -n "$HAVE_PYTHON" && {
+    PYTHONSTARTUP=~/.pythonrc.py
+    export PYTHONSTARTUP
 }
 
 test -n "$HAVE_VIM" && {

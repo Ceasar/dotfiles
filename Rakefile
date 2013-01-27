@@ -3,6 +3,7 @@ files = Hash.new
 files[:git]  = %w(.gitconfig)
 files[:bash] = %w(.bash_profile .bashrc)
 files[:misc] = %w(.configuration .rc.sh .tmux.conf)
+files[:python]  = %w(.pythonrc.py)
 files[:vim]  = %w(.vim .vimrc)
 files[:zsh]  = %w(.zshrc)
 
@@ -19,7 +20,7 @@ $vim_bundles = {
 }
 
 files_all = Array.new
-[:zsh, :vim, :bash, :misc, :git].each { |symbol| files_all << files[symbol] }
+[:zsh, :vim, :bash, :misc, :python, :git].each { |symbol| files_all << files[symbol] }
 files_all.flatten!.sort!
 
 task 'install:all' do
@@ -33,6 +34,10 @@ end
 
 task 'install:git' do
     files[:git].each { |file| determine_action file }
+end
+
+task 'install:python' do
+    files[:python].each { |file| determine_action file }
 end
 
 task 'install:vim' do

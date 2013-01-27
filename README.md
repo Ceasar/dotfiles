@@ -27,9 +27,10 @@ Rake will ask you before overwriting any files that already exist.
 You can also install subsets of the environment using one of the following.
 
     rake install:bash
-    rake install:zsh
-    rake install:vim
     rake install:git
+    rake install:python
+    rake install:vim
+    rake install:zsh
 
 Credit to @tangledhelix for this idea (and many others).
 
