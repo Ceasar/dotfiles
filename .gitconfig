@@ -7,7 +7,6 @@
 [alias]
     # Use template "!sh -c 'git command $0'" for positional arguments
 
-
     # Verbose add
     join = add -v
 
@@ -106,6 +105,13 @@
     # Search historical diffs for a keyword
     pickax = !sh -c 'git log -S$0 --stat'
 
+    # Find all matching filenames in the project
+    find = !sh -c 'git ls-files | grep -i $0'
+
+    # Find a string in the code base
+    # -I non-binary
+    # -i non-case-sensitive
+    f = grep -Ii
 
     # Start a branch
     start = checkout -b
