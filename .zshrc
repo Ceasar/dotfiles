@@ -44,6 +44,12 @@ alias zshrc='vim ~/.zshrc; source ~/.zshrc'
 
 # Automatically `ls` after each `cd`
 function chpwd() {
+    # Set up zsh options to emulate the specified shell as much as possible.
     emulate -L zsh
         ls
+
+    # Source `.env` files
+    # This is useful for when environmental variables need to be set while
+    # working on a specific project
+    test -f .env && source .env
 }
