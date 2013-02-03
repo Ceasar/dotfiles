@@ -1,6 +1,9 @@
 set shell=/bin/bash
 call pathogen#infect()
 
+
+let g:syntastic_ocaml_camlp4r = 1
+
 set nocompatible "Use Vim defaults
 filetype on " enables filetype detection
 filetype plugin on " enable filetype specific plugins
@@ -12,26 +15,49 @@ set hidden
 set wildmenu "command-line completion
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
+" Config for polling apps
+"set nobackup " Do not make a backup before overwriting a file
+"set nowritebackup " Do not make a backup before overwriting a file
+"set noswapfile " Don't create swapfiles
+
 
 " Searching
 """""""""""
 
+" When there is a previous search pattern, highlight all its matches.
+set hlsearch
 
-set hlsearch   "highlight searches
-set incsearch  "highlight what you are searching for as you type
-set ignorecase "searches are case insensitive...
-set smartcase  " ... unless they contain at least one capital letter
+" While typing a search command, show where the pattern, as it was typed so
+" far, matches. The matched string is highlighted.
+set incsearch
+
+" While searching, the case of normal letters is ignored.
+set ignorecase
+
+" Ignore case when the patterns contains lowercase letters only.
+set smartcase
 
 
 "Graphical interface options
 """""""""""""""""""""""""""""
 
+" The kind of folding used for the current window.
+" - indent - Lines with equal indent form a fold.
 set foldmethod=indent
-set mouse=a "allow scrolling in iTerm
+
+" Enable the use of the mouse. Only works for certain terminals.
+" The mouse can be enabled for different modes:
+"   n   Normal mode
+"   v   Visual mode
+"   i   Insert mode
+"   c   Command-line mode
+"   a   All four modes modes
+set mouse=a
 
 syntax enable
 set background=dark "use colors which look good on a light background
 colorscheme solarized
+" let g:solarized_contrast="high"
 if exists("&colorcolumn")
     " display a colored column in column 80
     autocmd InsertEnter * set colorcolumn=81
@@ -44,7 +70,7 @@ endif
 "match ErrorMsg '\%>80v.\+'
 
 "automatically wrap around at the 80 character limit
-set textwidth=80
+" set textwidth=80
 " dont wrap (no need)
 set nowrap
 
@@ -67,12 +93,15 @@ set scrolloff=5 "pad top and bottom of screeen by x lines
 " 'shiftwidth' and 'softtabstop' to the same value, while leaving 'tabstop'
 " at its default value ('tabstop' defines the width of the TAB character).
 
-"a tab is 4 spaces
+" Number of spaces that a <Tab> counts for while performing editing
+" operations, like inserting a <Tab> or using <BS>.
 set softtabstop=4
 
 " Affects '>>', '<<', '==', and automatic indentation.
 set shiftwidth=4
 
+" In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
+" To insert a real tab when 'expandtab' is on, use CTRL-V<Tab>.
 " When true, inserts 'softtabstop' spaces instead of a tab on <TAB>
 set expandtab
 
@@ -82,13 +111,20 @@ set expandtab
 " used everywhere else.
 set smarttab
 
-" Copy the indentation from the previous line when starting a new line
+" Copy indent from current line when starting a new line.
 set autoindent
 
-" When autoindenting, copy indent format of previous line
+" Copy the structure of the existing lines indent when autoindenting a new
+" line.
 set copyindent
 
 " Automatically indent when it makes sense
+" Do smart autoindenting when starting a new line.
+" Works for C-like programs, but can also be used for other languages.
+" An indent is automatically insert:
+" - After a line ending in '{'.
+" - After a line starting with a keyword from 'cinwords'.
+" - Before a line starting with '}'
 set smartindent
 
 
@@ -112,6 +148,11 @@ endfunction
 :set dictionary="/usr/dict/words"
 
 
+" Abbreviations
+
+abbreviate w/ with
+
+
 " Disable the arrow-keys
 map <up> <nop>
 map <down> <nop>
@@ -130,7 +171,7 @@ function! DistractionFreeWriting()
     set linebreak " break the lines on words rather than arbitrary characters
     set nolist " don't show list
     set noruler " don't show ruler
-    set nonumber " don't show line number
+    " set nonumber " don't show line number
     set laststatus=0 " don't show status line
 endfunction
 
