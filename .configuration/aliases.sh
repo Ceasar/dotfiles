@@ -29,6 +29,9 @@ alias delete='rm'
 # Short alias
 alias e="$EDITOR"
 
+# Sorted env
+alias env="env | args | sort"
+
 # Grep recursively. Show line numbers and one line of context on either side.
 alias f="grep -rn -C 1"
 
