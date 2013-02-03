@@ -78,7 +78,7 @@ alias rc='$EDITOR ~/.rc.sh; source ~/.rc.sh'
 alias reload="source ~/.rc.sh"
 
 # Make rm interactive and verbose
-alias rm='rm -iv'
+alias rm='rm -v'
 
 # Analogous to `whoami`
 alias whereami='pwd'
