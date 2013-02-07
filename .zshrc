@@ -45,11 +45,23 @@ alias zshrc='vim ~/.zshrc; source ~/.zshrc'
 # Automatically `ls` after each `cd`
 function chpwd() {
     # Set up zsh options to emulate the specified shell as much as possible.
-    emulate -L zsh
-        ls
 
     # Source `.env` files
     # This is useful for when environmental variables need to be set while
     # working on a specific project
     test -f .env && source .env
+}
+
+function precmd() {
+    # If the contents of the present working directory change, ls.
+
+    a=$(cat ~/.contents)
+    b=$(ls)
+    if [ $a = $b ]
+    then
+    else
+        emulate -L zsh
+            ls
+    fi
+    ls > ~/.contents
 }
