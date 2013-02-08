@@ -42,6 +42,12 @@ source ~/.rc.sh
 
 alias zshrc='vim ~/.zshrc; source ~/.zshrc'
 
+if [ -f ~/.zsh_nocorrect ]; then
+    while read -r COMMAND; do
+        alias $COMMAND="nocorrect $COMMAND"
+    done < .zsh_nocorrect
+fi
+
 # Automatically `ls` after each `cd`
 function chpwd() {
     # Set up zsh options to emulate the specified shell as much as possible.

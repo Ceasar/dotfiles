@@ -5,7 +5,7 @@ files[:bash] = %w(.bash_profile .bashrc)
 files[:misc] = %w(.configuration .rc.sh .tmux.conf)
 files[:python]  = %w(.pythonrc.py)
 files[:vim]  = %w(.vim .vimrc)
-files[:zsh]  = %w(.zshrc)
+files[:zsh]  = %w(.zshrc .zsh_nocorrect)
 
 $vim_bundles = {
     'coffeescript'       => 'kchmck/vim-coffee-script',
