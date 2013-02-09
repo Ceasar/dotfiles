@@ -1,18 +1,30 @@
 set shell=/bin/bash
+
 call pathogen#infect()
+
+set nocompatible "Use Vim defaults
+
+syntax enable
 
 
 let g:syntastic_ocaml_camlp4r = 1
 
-set nocompatible "Use Vim defaults
 filetype on " enables filetype detection
 filetype plugin on " enable filetype specific plugins
 filetype indent on
+
 set spell spelllang=en_us " enable spell-check
+set dictionary="/usr/share/dict/words"
 
 " Allow hidden buffer
 set hidden 
-set wildmenu "command-line completion
+
+" Command-line completion operates in an enhanced mode. On pressing
+" 'wildchar' (usually <Tab>) to invoke completion, the possible matches are
+" shown just above the command line, with the first match highlighted
+" overwriting the status line if there is one.)
+set wildmenu
+
 set backspace=indent,eol,start  " backspace through everything in insert mode
 
 " Config for polling apps
@@ -41,10 +53,6 @@ set smartcase
 "Graphical interface options
 """""""""""""""""""""""""""""
 
-" The kind of folding used for the current window.
-" - indent - Lines with equal indent form a fold.
-set foldmethod=indent
-
 " Enable the use of the mouse. Only works for certain terminals.
 " The mouse can be enabled for different modes:
 "   n   Normal mode
@@ -54,56 +62,76 @@ set foldmethod=indent
 "   a   All four modes modes
 set mouse=a
 
-syntax enable
 set background=dark "use colors which look good on a light background
+
 colorscheme solarized
 " let g:solarized_contrast="high"
 if exists("&colorcolumn")
-    " display a colored column in column 80
-    autocmd InsertEnter * set colorcolumn=81
-    autocmd InsertLeave * set colorcolumn=""
     "color of ruler @ 80 col, 2=green, 0=light gray
-    highlight ColorColumn ctermbg=0
+    set colorcolumn=81
+    highlight ColorColumn ctermbg=2
 endif
 
-"highlight any characters past 80
-"match ErrorMsg '\%>80v.\+'
-
 "automatically wrap around at the 80 character limit
-" set textwidth=80
-" dont wrap (no need)
+" Maximum width of text that is being inserted. A longer line will be broken
+" after white space to get this width. A zero value disables this. 'textwidth'
+" is set to 0 when the paste option is set.
+set textwidth=0
+
+" When on, lines longer than the width of the window will wrap and displaying
+" continues on the next line. When off, lines will not wrap and only part of
+" long lines will be displayed. When the cursor is moved to a part that is not
+" shown, the screen will scroll horizontally.
 set nowrap
 
-"set columns=80 "set the number of columns used on the screen
+" Number of columns on the screen. Normally this is set by the terminal
+" initialization and does not have to be set by hand.
+"set columns=80
 
-set list "print hidden characters
-set number "display line number on left
-"set rnu "display relative line number on left
-set ruler "display cursor position
-set showcmd "show partial commands in the last line of the screen
+" Display unprintable characters with '^' and put $ after the line.
+" set list
 
-set scrolloff=5 "pad top and bottom of screeen by x lines
+" Precede each line with its line number.
+set number
+
+" Show the line number relative to the line with the cursor in front of each
+" line.
+"set relativenumber
+
+" Show the line and column number of the cursor position, separated by a
+" comma.
+set ruler
+
+" Show partial commands in the last line of the screen
+set showcmd
+
+" Minimal number of screen lines to keep above and below the cursor.
+set scrolloff=5
 
 
 " Indentation
-"""""""""""""
+"====================================
 
-
-" For indentation without tabs, the principle is to set 'expandtab' and set
-" 'shiftwidth' and 'softtabstop' to the same value, while leaving 'tabstop'
-" at its default value ('tabstop' defines the width of the TAB character).
+" Number of spaces that a <Tab> in the file counts for.
+" > This affects how existing text displays.
+set tabstop=4
 
 " Number of spaces that a <Tab> counts for while performing editing
 " operations, like inserting a <Tab> or using <BS>.
 set softtabstop=4
 
-" Affects '>>', '<<', '==', and automatic indentation.
-set shiftwidth=4
-
 " In Insert mode: Use the appropriate number of spaces to insert a <Tab>.
 " To insert a real tab when 'expandtab' is on, use CTRL-V<Tab>.
 " When true, inserts 'softtabstop' spaces instead of a tab on <TAB>
 set expandtab
+
+" Number of spaces to use for each step of (auto)indent. Used for
+" `cindent`, `>>`, `<<`, etc.
+set shiftwidth=4
+
+" The kind of folding used for the current window.
+" - indent - Lines with equal indent form a fold.
+set foldmethod=indent
 
 " Changes how <TAB> is interpreted depending on where the cursor is.
 " If true, pressing <TAB> inserts indentation according to 'shiftwidth'
@@ -144,27 +172,43 @@ function! Tab_Or_Complete()
     return "\<Tab>"
   endif
 endfunction
-:inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-:set dictionary="/usr/dict/words"
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
 
 
 " Abbreviations
+"====================================
 
 abbreviate w/ with
 
 
-" Disable the arrow-keys
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" Mappings
+"====================================
 
-" Use jj to get back to command mode instead of Esc, which is out of the
-" " way and on some keyboards hard to reach. Esc still works too.
-inoremap jj <esc>
+noremap <up> <nop>
+noremap <down> <nop>
+noremap <left> <nop>
+noremap <right> <nop>
 
-" turn-on distraction free writing mode for markdown files
-au BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
+" inoremap <esc> <nop>
+
+let mapleader = "-"
+let maplocalleader = "\\"
+
+inoremap <space><space> <esc>
+inoremap <leader><space> <esc>
+
+nnoremap <leader>ev :split $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
+nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
+nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+
+nnoremap H ^
+nnoremap L $
+
+
+" Misc
+"====================================
 
 function! DistractionFreeWriting()
     set wrap " make long lines wrap around to the next line
@@ -175,6 +219,18 @@ function! DistractionFreeWriting()
     set laststatus=0 " don't show status line
 endfunction
 
+augroup markdown 
+    " turn-on distraction free writing mode for markdown files
+    autocmd BufNewFile,BufRead *.{md,mdown,mkd,mkdn,markdown,mdwn} call DistractionFreeWriting()
+augroup END
 
-" Use javascript syntax highlighting for json
-autocmd BufNewFile,BufRead *.json set ft=javascript
+augroup highlight
+    " Use javascript syntax highlighting for json
+    autocmd BufNewFile,BufRead *.json set ft=javascript
+augroup END
+
+augroup comments
+    autocmd FileType haskell nnoremap <buffer> <localleader>c I//
+    autocmd FileType javascript nnoremap <buffer> <localleader>c I--
+    autocmd FileType python     nnoremap <buffer> <localleader>c I#
+augroup END
