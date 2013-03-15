@@ -17,8 +17,8 @@ alias c='cd'
 # Long alias
 alias copy='cp -r'
 
-# Make copying interactive and verbose
-alias cp='cp -iv'
+# Prevent accidentally overwriting files
+alias cp='cp -i'
 
 # show what an alias actually is
 alias dealias="alias"
@@ -59,9 +59,6 @@ alias lr='find . -type f | sed "s#^./##"'
 # Add color
 alias ls='ls -G'
 
-# Make move interactive and verbose
-alias mv='mv -iv'
-
 # Synonym
 alias now='date'
 
@@ -76,9 +73,6 @@ alias rc='$EDITOR ~/.rc.sh; source ~/.rc.sh'
 
 # reload bash config
 alias reload="source ~/.rc.sh"
-
-# Make rm interactive and verbose
-alias rm='rm -v'
 
 # Analogous to `whoami`
 alias whereami='pwd'
