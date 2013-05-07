@@ -57,7 +57,7 @@ test -n "$HAVE_VIM" && {
     alias vimrc='$EDITOR ~/.vimrc'
 }
 
-test -z "$HAVE_VIRTUALENVWRAPPER" && {
+test -n "$HAVE_VIRTUALENVWRAPPER" && {
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/Devel
     source /usr/local/bin/virtualenvwrapper.sh
