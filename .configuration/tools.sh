@@ -3,7 +3,7 @@ HAVE_GIT=$(command -v git 2>/dev/null)
 HAVE_PYTHON=$(command -v python 2>/dev/null)
 HAVE_TMUX=$(command -v tmux 2>/dev/null)
 HAVE_VIM=$(command -v vim 2>/dev/null)
-HAVE_VIRTUALENVWRAPPER=$(pip freeze | grep virtualenvwrapper 1>/dev/null)
+HAVE_VIRTUALENVWRAPPER=$(pip freeze | grep virtualenvwrapper)
 
 test -n "$HAVE_GIT" && {
     # Get all of the merged local branches and remove them
