@@ -1,4 +1,3 @@
-
 # cd quickly 
 alias ..='cd ..'
 
@@ -76,6 +75,9 @@ alias reload="source ~/.rc.sh"
 
 # Analogous to `whoami`
 alias whereami='pwd'
+
+# Get the unix time
+alias unixtime='date +%s'
 
 # Short alias
 alias v="$EDITOR"
