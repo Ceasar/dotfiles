@@ -16,7 +16,7 @@ Also has config files for programs I no longer use including:
 
 # Installation
 
-    git clone https://github.com/Ceasar/dotfiles.git
+    git clone https://github.com/Caesar/dotfiles.git
 
 To install my dotfiles as *your* dotfiles, you can create symlinks with `rake`. If you do *not* run the rake command, everything will be isolated inside of the `.dotfiles` directory and will not interfere with your existing environment.
 
